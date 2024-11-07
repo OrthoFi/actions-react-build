@@ -49,14 +49,14 @@ runs:
         aws-region: ${{ inputs.aws-region }}
         role-to-assume: ${{ steps.set-role.outputs.build-role }}
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: ${{ inputs.repository }}
         persist-credentials: false
     - name: Setup Node    
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
-        node-version: 15.x
+        node-version: 18.x
     - name: Inject insteadOf configuration
       shell: bash
       run: |
@@ -78,7 +78,7 @@ runs:
       shell: bash
       run: npm install && npm run build
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: client
         path: dist
