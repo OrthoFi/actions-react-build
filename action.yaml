@@ -63,7 +63,7 @@ runs:
         git config --global url."https://${{ inputs.token }}@github.com/".insteadOf ssh://git@github.com/
         npm ci    
     - name: Get App Config
-      uses: orthofi/actions-aws-ssm-get-by-path@v1
+      uses: orthofi/actions-aws-ssm-get-by-path@v2
       with:
         paths: ${{ format('/app/{0}/env/{1}/', inputs.app-name, inputs.target-environment) }}
         save-to-environment: true
